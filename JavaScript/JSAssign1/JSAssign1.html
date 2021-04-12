@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>JS Assignment#1</title>
+    <style>
+    #myBlock {
+    	display:block;
+    }
+    #myArrows {
+    	position: absolute;
+    	left:600px;
+		top:600px;
+		width:300px
+    }
+    #cannonball {
+    	width:100px;
+    	height:100px;
+    	position: absolute;
+    	left:300px;
+		top:550px;
+
+    }
+    #ularrow {
+    	float:left;
+    	width: 100px;
+    }
+    #uarrow {
+    	float:left;
+    	width: 100px;
+    }
+    #urarrow {
+    	float:left;
+    	width: 100px;
+    }
+    #larrow {
+    	float:left;
+    	width: 100px;
+    }
+    #marrow {
+    	float:left;
+    	width: 100px;
+    }
+    #rarrow {
+    	float:left;
+    	width: 100px;
+    }
+    #dlarrow {
+    	float:left;
+    	width: 100px;
+    }
+    #darrow {
+    	float:left;
+    	width: 100px;
+    }
+    #drarrow {
+    	float:left;
+    	width: 100px;
+    }
+	</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready( function ( ) {
+		alert ("Thanks for visiting");
+		$("<h2>Plan a Visit</h2>").insertAfter("h1");
+	} );
+	function moveCannonball( XChange, YChange ){
+		var XPos = $("#cannonball").css("left");
+		var YPos = $("#cannonball").css("top");
+		XPos = parseInt(XPos) + parseInt(XChange);
+		YPos = parseInt(YPos) + parseInt(YChange);
+		$("#cannonball").css("left", XPos + "px");
+		$("#cannonball").css("top", YPos + "px");
+	}
+	function showDiv () {
+		$("#myBlock").show();
+	}
+	function hideDiv () {
+		$("#myBlock").hide();
+	}
+	function changeTextColor () {
+		$("p:nth-child(even)").css("color", "red");
+	}
+</script>         
+</head>
+
+<body>
+<h1>Fortress of Louisbourg</h1>
+<div id="myBlock"><P>...</P></div>
+
+<a href="" onclick="javascript:showDiv(); return false;">(+)</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" onclick="javascript:hideDiv(); return false;">(-)</a>
+
+<a href="" onclick="javascript:changeTextColor(); return false;">make text red</a><br />
+
+<img src="cannonball.jpg" id="cannonball" />
+
+<div id="myArrows">
+	<div id="ularrow"><a id="aUpLeft" onclick='javascript:moveCannonball("-25", "-25"); return false;'><img id="iUpLeft" src="ularrow.jpg" /></a></div>
+	<div id="uarrow"><a id="aUp" onclick='javascript:moveCannonball("0", "-50"); return false;'><img id="iUp" src="uarrow.jpg" /></a></div>
+	<div id="urarrow"><a id="aUpperRight" onclick='javascript:moveCannonball("25", "-25"); return false;'><img id="iUpperRight" src="urarrow.jpg" /></a></div>
+	<div id="larrow"><a id="aLeft" onclick='javascript:moveCannonball("-50", "0"); return false;'><img id="iLeft" src="larrow.jpg" /></a></div>
+	<div id="marrow"> &nbsp; </div>
+	<div id="rarrow"><a id="aRight" onclick='javascript:moveCannonball("50", "0"); return false;'><img id="iRight" src="rarrow.jpg" /></a></div>
+	<div id="dlarrow"><a id="aDownLeft" onclick='javascript:moveCannonball("-25", "25"); return false;'><img id="iDownLeft" src="dlarrow.jpg" /></a></div>
+	<div id="darrow"><a id="aDown" onclick='javascript:moveCannonball("0", "50"); return false;'><img id="iDown" src="darrow.jpg" /></a></div>
+	<div id="drarrow"><a id="aDownRight" onclick='javascript:moveCannonball("25", "25"); return false;'><img id="iDownRight" src="drarrow.jpg" /></a></div>
+</div>
+
+</body>
+</html>

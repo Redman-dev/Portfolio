@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #field01Error, #field02Error, #field03Error, #field04Error, #field07Error, #field08Error, #field09Error, #field10Error, #field11Error {
+            display: none;
+        }
+        .spanError {
+            font-weight: 800;
+            color: red;
+            display: inline-block !important;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function getFormData( ) {
+            var field01 = $("#field01").val();
+            var field02 = $("#field02").val();
+            var field03 = $("#field03").val();
+            var field04 = $("#field04").val();
+            var field05 = $("#field05").val();
+            var field06 = $("#field06").val();
+            var field07 = $("#field07").val();
+            var field08 = $("#field08").val();
+            var field09 = $("#field09").val();
+            var field10 = $("#field10").val();
+            var field11 = $("#field11").val();
+            
+            var errors = 0;
+
+            //if statement to check each required/formatted field for validity
+            if ( field01 == "") {
+                errors = 1;
+                $("#field01Error").addClass('spanError');
+            } else {
+                $("#field01Error").removeClass('spanError');
+            }
+
+            if (field02 == "") {
+                errors = 2;
+                $("#field02Error").addClass('spanError');
+            } else {
+                $("#field02Error").removeClass('spanError');
+            }
+
+            if (field03 == "") {
+                errors = 3;
+                $("#field03Error").addClass('spanError');
+            } else {
+                $("#field03Error").removeClass('spanError');
+            }
+
+            if (field04 == "") {
+                errors = 4;
+                $("#field04Error").addClass('spanError');
+            } else {
+                $("#field04Error").removeClass('spanError');
+            }
+
+            if (field07 == "") {
+                errors = 7;
+                $("#field07Error").addClass('spanError');
+            } else {
+                $("#field07Error").removeClass('spanError');
+            }
+
+            if (field08 == "") {
+                errors = 8;
+                $("#field08Error").addClass('spanError');
+            } else {
+                $("#field08Error").removeClass('spanError');
+            }
+
+            if (field09 == "") {
+                errors = 9;
+                $("#field09Error").addClass('spanError');
+            } else {
+                $("#field09Error").removeClass('spanError');
+            }
+
+            if (field10 == "") {
+                errors = 10;
+                $("#field10Error").addClass('spanError');
+            } else {
+                $("#field10Error").removeClass('spanError');
+            }
+
+            if (field11 == "") {
+                errors = 11;
+                $("#field11Error").addClass('spanError');
+            } else {
+                $("#field11Error").removeClass('spanError');
+            }
+
+            if (errors == 0) {
+               
+                var dataForServer = 'field01=' + field01 + '&field02=' + field02 + '&field03=' + field03 + 
+                                    '&field04=' + field04 + '&field05=' + field05 + '&field06=' + field06 +
+                                    '&field07=' + field07 + '&field08=' + field08 + '&field09=' + field09 +
+                                    '&field10=' + field10 + '&field11=' + field11;
+
+                console.log(dataForServer);
+                
+                $.ajax({
+                    type: "POST",
+                    url: "send.php",
+                    data: dataForServer,
+                    success: function(msg) {
+                        if (msg != "") alert(msg);
+                    }
+                });
+
+            } else {
+                alert('Error code: '+ errors);
+            }
+            
+        }
+    </script>
+</head>
+    <body>
+        <form id="form01" name="form01" method="post" action="javascript:getFormData();">
+            <label for="field01">Title:</label>
+            <select name="field01" id="field01">
+                <option hidden disabled selected></option>
+                <option value="Mr.">Mr.</option>
+                <option value="Miss">Miss</option>
+                <option value="Ms.">Ms.</option>
+                <option value="Mrs.">Mrs.</option>
+            </select>
+            <span id="field01Error">*required</span>
+
+            <label for="field02">First Name:</label>
+            <input type="text" name="field02" id="field02" value="" />
+            <span id="field02Error">*required</span>
+            <br />
+
+            <label for="field03">Last Name:</label>
+            <input type="text" name="field03" id="field03" value="" />
+            <span id="field03Error">*required</span>
+            <br />
+
+            <label for="field04">Street Address:</label>
+            <input type="text" name="field04" id="field04" value="" />
+            <span id="field04Error">*required</span>
+            <br />
+
+            <label for="field05">Street Address 2:</label>
+            <input type="text" name="field05" id="field05" value="" />
+            <br />
+
+            <label for="field06">Street Address 3:</label>
+            <input type="text" name="field06" id="field06" value="" />
+            <br />
+
+            <label for="field07">Province/State:</label>
+            <select name="field07" id="field07">
+                <option hidden disabled selected></option>
+                <option value="AB">Alberta</option>
+                <option value="BC">British Columbia</option>
+                <option value="MB">Manitoba</option>
+                <option value="NB">New Brunswick</option>
+                <option value="NL">Newfoundland and Labrador</option>
+                <option value="NS">Nova Scotia</option>
+                <option value="ON">Ontario</option>
+                <option value="PE">Prince Edward Island</option>
+                <option value="QC">Quebec</option>
+                <option value="SK">Saskatchewan</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District Of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+            </select>
+            <span id="field07Error">*required</span>        
+            <br />
+
+            <label for="field08">Country:</label>
+            <select name="field08" id="field08">
+                <option hidden disabled selected></option>
+                <option value="CA">Canada</option>
+                <option value="US">United States</option>
+            </select>
+            <span id="field08Error">*required</span>        
+            <br />
+
+            <label for="field09">Email Address:</label>
+            <input type="email" name="field09" id="field09" value="" />
+            <span id="field09Error">*required</span>
+            <br />
+
+            <label for="field10">Password:</label>
+            <input type="password" name="field10" id="field10" value="" />
+            <span id="field10Error">*required</span>
+            <br />
+
+            <label for="field11">Confirm Password:</label>
+            <input type="password" name="field11" id="field11" value="" />
+            <span id="field11Error">*required</span>
+            <br />
+
+            <input type="submit" name="submit" id="submit" value="Submit" />
+        </form>
+    </body>
+</html>
