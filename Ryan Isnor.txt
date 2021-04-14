@@ -1,0 +1,14 @@
+#About Me
+
+Programming languages I know:
+* Java
+* Python
+* MatLab
+* C
+* JavaScript
+* Html
+* VHDL
+
+I love programming and I pick up new languages very quickly. Especially when the new language is similar to a language I have already learned, I have worked with FPGAs in the past and I thought they were very interesting. I have a great understanding of boolean logic gates and love different number systems like binary and hexidecimal. I have set up desktops, cash registers, and other devices for buisness use.
+
+I have a very diverse work experience working at a restaraunt, an open kitchen startup, a tool rental location as well as assisting in managing an expansion and renovation at a hospital, These experiences allow me to adapt to whatever position I am inserted into and getting along with my coworkers. I learned a lot at NSCC and it hass allowed me to know more about everything from computer networks to software design to networking with others.
