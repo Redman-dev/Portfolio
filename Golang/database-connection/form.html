@@ -1,0 +1,40 @@
+{{define "form"}}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body>
+<h1>Simple Contact Form</h1>
+<form method="POST" action="/hi">
+    <label>Name<br/>
+        <input type="text" name="name">
+    </label><br/>
+    <label>Address<br/>
+        <input type="text" name="address">
+    </label><br/>
+    <label>Monthly Salary<br/>
+        <input type="number" step="any" name="salary"><br/>
+    </label>
+    <label>Phone Number<br/>
+        <input type="number" name="phone"><br/>
+    </label>
+    <input type="submit" content="Print">
+</form>
+</body>
+</html>
+{{end}}
+{{define "result"}}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+<h1>{{.EmployeeName}}</h1>
+<h3>{{.EmployeeAddress}}</h3>
+<p>{{.MonthSalary}}</p>
+<p>{{.PhoneNo}}</p>
+</body>
+</html>
+{{end}}

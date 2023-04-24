@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Tech Store</title>
+		<style>
+			.row{
+				width: 100%;
+			}
+			.Item *{
+				width: 90%;
+				padding-left: 5%;
+				padding-right: 5%;
+				display: block;
+			}
+
+			.Item a:link {
+				text-decoration: none;
+			}
+
+			.Item a:visited {
+				text-decoration: none;
+			}
+
+			.Item a:hover {
+				text-decoration: none;
+			}
+
+			.Item a:active {
+				text-decoration: none;
+			}
+
+			.Item{
+				width: 25%;
+				display: block;
+				float: left;
+			}
+
+			.modal {
+				display: none;
+				position: fixed;
+				z-index: 1;
+				padding-top: 100px; 
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				overflow: auto;
+				background-color: rgb(0,0,0);
+				background-color: rgba(0,0,0,0.4);
+			}
+
+			.modal-content {
+				background-color: #fefefe;
+				margin: auto;
+				padding: 20px;
+				border: 1px solid #888;
+				width: 80%;
+			}
+
+			.close {
+				color: #aaaaaa;
+				float: right;
+				font-size: 28px;
+				font-weight: bold;
+			}
+
+			.close:hover, .close:focus {
+				color: #000;
+				text-decoration: none;
+				cursor: pointer;
+			}
+
+			div.row {
+				clear: both;
+				width: 100%;
+			}
+			div.row::after {
+				clear: both;
+				content: "";
+				display: table;
+			}
+
+			div.column33 {
+				width: 33%;
+			}
+			div.column67 {
+				width: 67%;
+			}
+
+			#field1Error, #field1Error2, #field2Error, #field3Error {
+            	display: none;
+        	}
+
+			.spanError {
+           		font-weight: 800;
+            	color: red;
+            	display: inline-block !important;
+        	}
+
+			.bd-highlight {
+    			background-color: rgba(45, 41, 49, 0.336);
+    			border: 1px solid rgba(86,61,124,0.15);
+			}
+
+		</style>
+        <link href="/Files/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/Files/css/styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="/Files/sss/sss.css" type="text/css" media="all">
+        <link href="fancybox-2.1.7/source/jquery.fancybox.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/Files/js/jquery-slim.min.js"><\/script>')</script>
+        <script src="/Files/js/popper.min.js"></script>
+        <script src="/Files/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/Files/fancybox-2.1.7/source/jquery.fancybox.pack.js"></script>
+        <script src="/Files/sss/sss.js"></script>
+        <script>
+            jQuery(function($) {
+                $('.slider').sss({
+                  speed : 10000
+                });
+            });
+
+        </script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".ItemView").fancybox({
+					maxWidth	: 800,
+					maxHeight	: 600,
+					fitToView	: false,
+					width		: '70%',
+					height		: '70%',
+					autoSize	: false,
+					closeClick	: false,
+					openEffect	: 'none',
+					closeEffect	: 'none'
+				});
+				
+			});
+
+			function showModal(id) {
+				$(".modal."+id).show();
+			};
+
+			function closeModal() {
+				$(".modal").hide();
+			}
+
+			function changePage(id) {
+				$(".Products").hide();
+				$(".About").hide();
+				$(".Contact").hide();
+				if (id == 1) {
+					$(".Products").show();
+				}else if (id == 2) {
+					$(".About").show();
+				}else{
+					$(".Contact").show();
+				}
+			}
+
+			function isEmail(email) {
+  				var regex = new RegExp("^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$");
+  				return regex.test(email);
+			}
+
+			function getFormData( ) {
+            var field1 = $("#field1").val();
+            var field2 = $("#field2").val();
+            var field3 = $("#field3").val();
+		
+            var errors = 0;
+
+			if ( field1 == "") {
+                errors = 1;
+                $("#field1Error").addClass('spanError');
+            } else {
+				if (!isEmail(field1)) {
+					errors = 4;
+					$("#field1Error2").addClass('spanError');
+				} else {
+					$("#field1Error2").removeClass('spanError');
+				}
+                $("#field1Error").removeClass('spanError');
+            }
+			
+
+            if (field2 == "") {
+                errors = 2;
+                $("#field2Error").addClass('spanError');
+            } else {
+                $("#field2Error").removeClass('spanError');
+            }
+
+            if (field3 == "") {
+                errors = 3;
+                $("#field3Error").addClass('spanError');
+            } else {
+                $("#field3Error").removeClass('spanError');
+            }
+
+            if (errors == 0) {
+               
+                var dataForServer = 'field1=' + field1 + '&field2=' + field2 + '&field3=' + field3;
+
+                console.log(dataForServer);
+                
+                $.ajax({
+                    type: "POST",
+                    url: "/Files/send.php",
+                    data: dataForServer,
+                    success: function(msg) {
+                        if (msg != "") alert(msg);
+                    }
+                });
+
+            } else {
+                alert('Error code: '+ errors);
+            }
+            
+        }
+			
+		</script>
+    </head>
+
+    <body>
+		<header>
+			<div class="slider">
+			<img src="https://thimpress.com/wp-content/uploads/2018/02/tech-banner.jpg" />
+			<img src="https://leumiusa.com/wp-content/uploads/2015/10/banner-industry-tech.jpg" />
+			</div>
+			<h1 style="position:absolute; top: 3%; text-align: center; width: 100%; color: white; -webkit-text-stroke: 1px black;">Tech Store</h1>
+		</header>
+		<div class="nav" style="width: 100%;">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 100%;">
+				<a class="navbar-brand" href="#">
+					<img src="https://tech.dibspayment.com/sites/tech/files/pictures/UNIVERS/hello.png" width="50" height="50" alt="">
+				</a>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item-active">
+							<a class="nav-link" onclick='javascript:changePage(1); return false;' href="#home">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" onclick='javascript:changePage(2); return false;' href="#about">About Us</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" onclick='javascript:changePage(3); return false;' href="#contact">Contact Us</a>
+						</li>
+					</ul>
+				</div>
+			</nav> 
+		</div>
+		<div class="Products">
+			<H1 style="width: 100%; text-align: center;">
+				<u>Our Products</u>
+			</H1>
+			<div class="modal 1">
+				<div class="modal-content">
+					<span onclick='javascript:closeModal(); return false;' class="close">&times;</span>
+					<div class="row">
+						<div class="column67">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+						<div class="column33">
+							<a class="ItemView mw-50" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+					</div>
+					<br>
+					<p>Ready for some wireless karaoke? Try singing along to your favorite tunes with the Home Karaoke Bluetooth Speaker System. The sleek Singing Machine system includes a wireless speaker and a microphone that doubles as a remote control. With the system's wireless microphone in your hand, you can create a playlist of songs, select your avatar and mute the audio. Depending on your needs, you can connect the speaker wirelessly to a Bluetooth device, such as a smartphone or tablet. When the system is connected to your TV, you also can set it up to transmit music videos from a subscription-based karaoke channel via your home's wireless network. Not in the mood to sing or listen to others sing? Equipped with 2.1 omni-directional sound, two tweeters and a subwoofer, it also works as a regular speaker.</p>
+					<p style="text-align: right;">Price: $299.99</p>
+					<a href="#Item1" style="text-align: right;">Add to Cart</a>
+				</div>
+			</div>
+			<div class="modal 2">
+				<div class="modal-content">
+					<span onclick='javascript:closeModal(); return false;' class="close">&times;</span>
+					<div class="row">
+						<div class="column67">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+						<div class="column33">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+					</div>
+					<br>
+					<p>Ready for some wireless karaoke? Try singing along to your favorite tunes with the Home Karaoke Bluetooth Speaker System. The sleek Singing Machine system includes a wireless speaker and a microphone that doubles as a remote control. With the system's wireless microphone in your hand, you can create a playlist of songs, select your avatar and mute the audio. Depending on your needs, you can connect the speaker wirelessly to a Bluetooth device, such as a smartphone or tablet. When the system is connected to your TV, you also can set it up to transmit music videos from a subscription-based karaoke channel via your home's wireless network. Not in the mood to sing or listen to others sing? Equipped with 2.1 omni-directional sound, two tweeters and a subwoofer, it also works as a regular speaker.</p>
+					<p style="text-align: right;">Price: $299.99</p>
+					<a href="#Item2" style="text-align: right;">Add to Cart</a>
+				</div>
+			</div>
+			<div class="modal 3">
+				<div class="modal-content">
+					<span onclick='javascript:closeModal(); return false;' class="close">&times;</span>
+					<div class="row">
+						<div class="column67">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+						<div class="column33">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+					</div>
+					<br>
+					<p>Ready for some wireless karaoke? Try singing along to your favorite tunes with the Home Karaoke Bluetooth Speaker System. The sleek Singing Machine system includes a wireless speaker and a microphone that doubles as a remote control. With the system's wireless microphone in your hand, you can create a playlist of songs, select your avatar and mute the audio. Depending on your needs, you can connect the speaker wirelessly to a Bluetooth device, such as a smartphone or tablet. When the system is connected to your TV, you also can set it up to transmit music videos from a subscription-based karaoke channel via your home's wireless network. Not in the mood to sing or listen to others sing? Equipped with 2.1 omni-directional sound, two tweeters and a subwoofer, it also works as a regular speaker.</p>
+					<p style="text-align: right;">Price: $299.99</p>
+					<a href="#Item3" style="text-align: right;">Add to Cart</a>
+				</div>
+			</div>
+			<div class="modal 4">
+				<div class="modal-content">
+					<span onclick='javascript:closeModal(); return false;' class="close">&times;</span>
+					<div class="row">
+						<div class="column67">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+						<div class="column33">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+					</div>
+					<br>
+					<p>Ready for some wireless karaoke? Try singing along to your favorite tunes with the Home Karaoke Bluetooth Speaker System. The sleek Singing Machine system includes a wireless speaker and a microphone that doubles as a remote control. With the system's wireless microphone in your hand, you can create a playlist of songs, select your avatar and mute the audio. Depending on your needs, you can connect the speaker wirelessly to a Bluetooth device, such as a smartphone or tablet. When the system is connected to your TV, you also can set it up to transmit music videos from a subscription-based karaoke channel via your home's wireless network. Not in the mood to sing or listen to others sing? Equipped with 2.1 omni-directional sound, two tweeters and a subwoofer, it also works as a regular speaker.</p>
+					<p style="text-align: right;">Price: $299.99</p>
+					<a href="#Item4" style="text-align: right;">Add to Cart</a>
+				</div>
+			</div>
+			<div class="modal 5">
+				<div class="modal-content">
+					<span onclick='javascript:closeModal(); return false;' class="close">&times;</span>
+					<div class="row">
+						<div class="column67">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+						<div class="column33">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+					</div>
+					<br>
+					<p>Ready for some wireless karaoke? Try singing along to your favorite tunes with the Home Karaoke Bluetooth Speaker System. The sleek Singing Machine system includes a wireless speaker and a microphone that doubles as a remote control. With the system's wireless microphone in your hand, you can create a playlist of songs, select your avatar and mute the audio. Depending on your needs, you can connect the speaker wirelessly to a Bluetooth device, such as a smartphone or tablet. When the system is connected to your TV, you also can set it up to transmit music videos from a subscription-based karaoke channel via your home's wireless network. Not in the mood to sing or listen to others sing? Equipped with 2.1 omni-directional sound, two tweeters and a subwoofer, it also works as a regular speaker.</p>
+					<p style="text-align: right;">Price: $299.99</p>
+					<a href="#Item5" style="text-align: right;">Add to Cart</a>
+				</div>
+			</div>
+			<div class="modal 6">
+				<div class="modal-content">
+					<span onclick='javascript:closeModal(); return false;' class="close">&times;</span>
+					<div class="row">
+						<div class="column67">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+						<div class="column33">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+					</div>
+					<br>
+					<p>Ready for some wireless karaoke? Try singing along to your favorite tunes with the Home Karaoke Bluetooth Speaker System. The sleek Singing Machine system includes a wireless speaker and a microphone that doubles as a remote control. With the system's wireless microphone in your hand, you can create a playlist of songs, select your avatar and mute the audio. Depending on your needs, you can connect the speaker wirelessly to a Bluetooth device, such as a smartphone or tablet. When the system is connected to your TV, you also can set it up to transmit music videos from a subscription-based karaoke channel via your home's wireless network. Not in the mood to sing or listen to others sing? Equipped with 2.1 omni-directional sound, two tweeters and a subwoofer, it also works as a regular speaker.</p>
+					<p style="text-align: right;">Price: $299.99</p>
+					<a href="#Item6" style="text-align: right;">Add to Cart</a>
+				</div>
+			</div>
+			<div class="modal 7">
+				<div class="modal-content">
+					<span onclick='javascript:closeModal(); return false;' class="close">&times;</span>
+					<div class="row">
+						<div class="column67">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+						<div class="column33">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+					</div>
+					<br>
+					<p>Ready for some wireless karaoke? Try singing along to your favorite tunes with the Home Karaoke Bluetooth Speaker System. The sleek Singing Machine system includes a wireless speaker and a microphone that doubles as a remote control. With the system's wireless microphone in your hand, you can create a playlist of songs, select your avatar and mute the audio. Depending on your needs, you can connect the speaker wirelessly to a Bluetooth device, such as a smartphone or tablet. When the system is connected to your TV, you also can set it up to transmit music videos from a subscription-based karaoke channel via your home's wireless network. Not in the mood to sing or listen to others sing? Equipped with 2.1 omni-directional sound, two tweeters and a subwoofer, it also works as a regular speaker.</p>
+					<p style="text-align: right;">Price: $299.99</p>
+					<a href="#Item7" style="text-align: right;">Add to Cart</a>
+				</div>
+			</div>
+			<div class="modal 8">
+				<div class="modal-content">
+					<span onclick='javascript:closeModal(); return false;' class="close">&times;</span>
+					<div class="row">
+						<div class="column67">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+						<div class="column33">
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+							<a class="ItemView" style="width: 100%;" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+								<img style="width: 100%;" src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+							</a>
+						</div>
+					</div>
+					<br>
+					<p>Ready for some wireless karaoke? Try singing along to your favorite tunes with the Home Karaoke Bluetooth Speaker System. The sleek Singing Machine system includes a wireless speaker and a microphone that doubles as a remote control. With the system's wireless microphone in your hand, you can create a playlist of songs, select your avatar and mute the audio. Depending on your needs, you can connect the speaker wirelessly to a Bluetooth device, such as a smartphone or tablet. When the system is connected to your TV, you also can set it up to transmit music videos from a subscription-based karaoke channel via your home's wireless network. Not in the mood to sing or listen to others sing? Equipped with 2.1 omni-directional sound, two tweeters and a subwoofer, it also works as a regular speaker.</p>
+					<p style="text-align: right;">Price: $299.99</p>
+					<a href="#Item8" style="text-align: right;">Add to Cart</a>
+				</div>
+			</div>
+			<div class="block" style="margin: auto">
+				<div class="Item">
+					<h1 style="text-align: center;">Karaoke Machine</h1>
+					<a class="ItemView" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+						<img src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+					</a>
+					<a href="#" class="View" onclick='javascript:showModal(1); return false;' style="text-align: right;">View</a>
+				</div>
+				<div class="Item">
+					<h1 style="text-align: center;">Karaoke Machine</h1>
+					<a class="ItemView" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+						<img src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+					</a>
+					<a href="#" class="View" onclick='javascript:showModal(2); return false;' style="text-align: right;">View</a>
+				</div>
+				<div class="Item">
+					<h1 style="text-align: center;">Karaoke Machine</h1>
+					<a class="ItemView" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+						<img src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+					</a>
+					<a href="#" class="View" onclick='javascript:showModal(3); return false;' style="text-align: right;">View</a>
+				</div>
+				<div class="Item">
+					<h1 style="text-align: center;">Karaoke Machine</h1>
+					<a class="ItemView" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+						<img src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+					</a>
+					<a href="#" class="View" onclick='javascript:showModal(4); return false;' style="text-align: right;">View</a>
+				</div>
+			</div>
+			<div class="block" style="margin: auto">
+				<div class="Item">
+					<h1 style="text-align: center;">Karaoke Machine</h1>
+					<a class="ItemView" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+						<img src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+					</a>
+					<a href="#" class="View" onclick='javascript:showModal(5); return false;' style="text-align: right;">View</a>
+				</div>
+				<div class="Item">
+					<h1 style="text-align: center;">Karaoke Machine</h1>
+					<a class="ItemView" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+						<img src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+					</a>
+					<a href="#" class="View" onclick='javascript:showModal(6); return false;' style="text-align: right;">View</a>
+				</div>
+				<div class="Item">
+					<h1 style="text-align: center;">Karaoke Machine</h1>
+					<a class="ItemView" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+						<img src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+					</a>
+					<a href="#" class="View" onclick='javascript:showModal(7); return false;' style="text-align: right;">View</a>
+				</div>
+				<div class="Item">
+					<h1 style="text-align: center;">Karaoke Machine</h1>
+					<a class="ItemView" href="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg">
+						<img src="https://www.gannett-cdn.com/-mm-/f355c015e9e05aa94f0d3c2ec256e6358bc003f3/c=0-482-4224-2864/local/-/media/USATODAY/GenericImages/2013/11/19//1384888805002-Singing-Machine-Home-and-Mic-Hi-Res.jpg"/>
+					</a>
+					<a href="#" class="View" onclick='javascript:showModal(8); return false;' style="text-align: right;">View</a>
+				</div>
+			</div>
+		</div>
+		<div class="About" style="display: none;">
+			<div style="width: 80%; margin: auto;" class="flex-column bd-highlight">
+				<H1 style="width: 100%; text-align: center;">
+					<u>About Our Company</u>
+				</H1>
+				<p class="p-2">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at pharetra nibh, eu porttitor lacus. Suspendisse aliquet mattis nunc ac faucibus. Sed dapibus dolor eget ligula laoreet tempor. Aliquam purus tortor, tempus vestibulum orci et, dignissim consectetur ipsum. Quisque lobortis volutpat tristique. In hac habitasse platea dictumst. Nunc vitae velit a dui gravida venenatis. Donec auctor augue at neque vulputate, ac commodo purus tincidunt. Donec auctor hendrerit sem.
+				</p>
+				<p class="p-2">
+					Suspendisse turpis orci, pharetra et diam eu, accumsan faucibus erat. Ut euismod eros eu diam laoreet tempus. Phasellus a leo id turpis vulputate blandit id sit amet enim. Maecenas pretium tellus ac iaculis faucibus. Donec nec augue augue. Aenean eu varius magna. Vivamus pretium, enim et gravida volutpat, massa magna sollicitudin orci, a sodales justo tortor sit amet ipsum. Nunc suscipit tortor vitae eros egestas consectetur. Etiam lobortis sapien a lectus euismod, vitae efficitur libero tincidunt. Aliquam sed varius ligula. In hac habitasse platea dictumst. Pellentesque tempor congue aliquam.
+				</p>
+				<p class="p-2">
+					Quisque condimentum nibh erat. Ut non tincidunt mauris. Nulla metus nisi, imperdiet sit amet blandit non, egestas eget urna. Quisque iaculis sed odio varius scelerisque. Sed aliquet metus leo, a euismod felis condimentum at. Praesent rhoncus eu tellus in porta. Sed vitae est justo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+				</p>
+			</div>
+		</div>
+		<div class="Contact" style="display: none; text-align: center;" >
+			<H1 style="width: 100%; text-align: center;">
+				<u>Contact Us</u>
+			</H1>
+			<form id="form01" name="form01" method="post" action="javascript:getFormData();">
+				<div style="width: 80%; margin-left: 10%; margin-right: 10%;" class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1">Email</span>
+					</div>
+					<input type="email" id="field1" class="form-control" aria-describedby="basic-addon1" />
+					<span id="field1Error">*required</span>
+					<span id="field1Error2">*invalid email address</span>
+				</div>
+				<br>
+				<div style="width: 80%; margin-left: 10%; margin-right: 10%;" class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon2">Subject</span>
+					</div>
+					<input type="text" id="field2" class="form-control" aria-describedby="basic-addon2">
+					
+					<span id="field2Error">*required</span>
+				</div>
+				<br>
+				<textarea class="input-group-text" style="width: 80%; margin: auto;" rows="10" name="message" form="form01" id="field3" placeholder="Enter message here..."></textarea>
+				<span id="field3Error">*required</span>
+				<br>
+				<input class="btn btn-primary" type="submit" name="submit" id="submit" value="Send" />
+			</form>
+			<br>
+		</div>
+    </body>
+</html>
