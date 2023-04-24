@@ -1,0 +1,95 @@
+﻿<Window x:Class="PROG2500_A2_Chinook.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROG2500_A2_Chinook"
+        mc:Ignorable="d"
+        Title="Chinook Music Store" Height="650" Width="900">
+    <Window.Resources>
+        <ResourceDictionary>
+            <BitmapImage x:Key="home" UriSource="\Images\home.png" />
+            <BitmapImage x:Key="artist" UriSource="\Images\artist.png" />
+            <BitmapImage x:Key="album" UriSource="\Images\album.png" />
+            <BitmapImage x:Key="track" UriSource="\Images\track.png" />
+            <BitmapImage x:Key="customer" UriSource="\Images\customer.png" />
+            <BitmapImage x:Key="catalog" UriSource="\Images\catalog.png" />
+        </ResourceDictionary>
+    </Window.Resources>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem x:Name="MenuExit" Header="_Exit" Click="MenuExit_Click">
+                    <ToolTipService.ToolTip>Click to close the program</ToolTipService.ToolTip>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Pages">
+                <MenuItem x:Name="MenuHome" Header="_Home" Click="HomeButton_Click" ToolTipService.ToolTip="Click to go to the home page of the application">
+                    <MenuItem.Icon>
+                        <!--<a href="https://www.flaticon.com/free-icons/home" title="home icons">Home icons created by Dave Gandy - Flaticon</a>-->
+                        <Image Source="{StaticResource home}"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="MenuArtists" Header="_View Artists" Click="ArtistsButton_Click" ToolTipService.ToolTip="Click to go to the artists page of the application">
+                    <MenuItem.Icon>
+                        <!--<a href="https://www.flaticon.com/free-icons/pop-singer" title="pop singer icons">Pop singer icons created by Anggara - Flaticon</a>-->
+                        <Image Source="{StaticResource artist}"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="MenuAlbums" Header="_View Albums" Click="AlbumsButton_Click" ToolTipService.ToolTip="Click to go to the albums page of the application">
+                    <MenuItem.Icon>
+                        <!--<a href="https://www.flaticon.com/free-icons/ui" title="ui icons">Ui icons created by Anggara - Flaticon</a>-->
+                        <Image Source="{StaticResource album}"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="MenuTracks" Header="_View Tracks" Click="TracksButton_Click" ToolTipService.ToolTip="Click to go to the tracks page of the application">
+                    <MenuItem.Icon>
+                        <!--<a href="https://www.flaticon.com/free-icons/music-and-multimedia" title="music and multimedia icons">Music and multimedia icons created by Freepik - Flaticon</a>-->
+                        <Image Source="{StaticResource track}"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="MenuCatalog" Header="_View Music Catalog" Click="MusicCatalogButton_Click" ToolTipService.ToolTip="Click to go to the music catalog page of the application">
+                    <MenuItem.Icon>
+                        <!--<a href="https://www.flaticon.com/free-icons/user-interface" title="user interface icons">User interface icons created by Anggara - Flaticon</a>-->
+                        <Image Source="{StaticResource catalog}"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="MenuCustomers" Header="_View Customers Orders" Click="CustomerOrdersButton_Click" ToolTipService.ToolTip="Click to go to the customer orders page of the application">
+                    <MenuItem.Icon>
+                        <!--<a href="https://www.flaticon.com/free-icons/customer" title="customer icons">Customer icons created by Freepik - Flaticon</a>-->
+                        <Image Source="{StaticResource customer}"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <ToolBar DockPanel.Dock="Left">
+            <StackPanel Orientation="Vertical" Width="50">
+                <Button x:Name="HomeButton" Click="HomeButton_Click" ToolTipService.ToolTip="Click to go to the home page of the application">
+                    <!--<a href="https://www.flaticon.com/free-icons/home" title="home icons">Home icons created by Dave Gandy - Flaticon</a>-->
+                    <Image Source="{StaticResource home}"></Image>
+                </Button>
+                <Button x:Name="ArtistsButton" Click="ArtistsButton_Click" ToolTipService.ToolTip="Click to go to the artists page of the application">
+                    <!--<a href="https://www.flaticon.com/free-icons/pop-singer" title="pop singer icons">Pop singer icons created by Anggara - Flaticon</a>-->
+                    <Image Source="{StaticResource artist}"></Image>
+                </Button>
+                <Button x:Name="AlbumsButton" Click="AlbumsButton_Click" ToolTipService.ToolTip="Click to go to the albums page of the application">
+                    <!--<a href="https://www.flaticon.com/free-icons/ui" title="ui icons">Ui icons created by Anggara - Flaticon</a>-->
+                    <Image Source="{StaticResource album}"></Image>
+                </Button>
+                <Button x:Name="TracksButton" Click="TracksButton_Click" ToolTipService.ToolTip="Click to go to the tracks page of the application">
+                    <!--<a href="https://www.flaticon.com/free-icons/music-and-multimedia" title="music and multimedia icons">Music and multimedia icons created by Freepik - Flaticon</a>-->
+                    <Image Source="{StaticResource track}"></Image>
+                </Button>
+                <Button x:Name="MusicCatalogButton" Click="MusicCatalogButton_Click" ToolTipService.ToolTip="Click to go to the music catalog page of the application">
+                    <!--<a href="https://www.flaticon.com/free-icons/user-interface" title="user interface icons">User interface icons created by Anggara - Flaticon</a>-->
+                    <Image Source="{StaticResource catalog}"></Image>
+                </Button>
+                <Button x:Name="CustomerOrdersButton" Click="CustomerOrdersButton_Click" ToolTipService.ToolTip="Click to go to the customer orders page of the application">
+                    <!--<a href="https://www.flaticon.com/free-icons/customer" title="customer icons">Customer icons created by Freepik - Flaticon</a>-->
+                    <Image Source="{StaticResource customer}"></Image>
+                </Button>
+            </StackPanel>
+        </ToolBar>
+        <Frame x:Name="mainFrame" Height="auto" Width="auto" NavigationUIVisibility="Hidden"></Frame>
+    </DockPanel>
+</Window>
