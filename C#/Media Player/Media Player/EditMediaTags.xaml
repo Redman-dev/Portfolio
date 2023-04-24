@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Media_Player.EditMediaTags"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Media_Player"
+             mc:Ignorable="d" 
+             d:DesignHeight="125" d:DesignWidth="400">
+    <Grid x:Name="GForm" Background="#7F000000">
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding Height, ElementName=LTitle, Mode=OneWay}" />
+            <RowDefinition Height="{Binding Height, ElementName=LArtist, Mode=OneWay}" />
+            <RowDefinition Height="{Binding Height, ElementName=LAlbum, Mode=OneWay}" />
+            <RowDefinition Height="{Binding Height, ElementName=LYear, Mode=OneWay}" />
+            <RowDefinition Height="{Binding Height, ElementName=BSave, Mode=OneWay}" />
+        </Grid.RowDefinitions>
+        <Label x:Name="LTitle" Content="Title"  Grid.Row="0" Grid.Column="0" Foreground="White" HorizontalAlignment="Stretch"/>
+        <TextBox x:Name="TBTitle" Grid.Row="0" Grid.Column="1" Foreground="White" HorizontalAlignment="Stretch" MaxLines="1" Background="#00000000" BorderBrush="{x:Null}"/>
+        <Label x:Name="LArtist" Content="Artist"  Grid.Row="1" Grid.Column="0" Foreground="White" HorizontalAlignment="Stretch"/>
+        <TextBox x:Name="TBArtist" Grid.Row="1" Grid.Column="1" Foreground="White" HorizontalAlignment="Stretch" MaxLines="1" Background="#00000000" BorderBrush="{x:Null}"/>
+        <Label x:Name="LAlbum" Content="Album"  Grid.Row="2" Grid.Column="0" Foreground="White" HorizontalAlignment="Stretch"/>
+        <TextBox x:Name="TBAlbum" Grid.Row="2" Grid.Column="1"  Foreground="White" HorizontalAlignment="Stretch" MaxLines="1" Background="#00000000" BorderBrush="{x:Null}"/>
+        <Label x:Name="LYear" Content="Year"  Grid.Row="3" Grid.Column="0" Foreground="White" HorizontalAlignment="Stretch"/>
+        <TextBox x:Name="TBYear" Grid.Row="3" Grid.Column="1" Foreground="White" HorizontalAlignment="Stretch" MaxLines="1" Background="#00000000" BorderBrush="{x:Null}"/>
+        <Button x:Name="BSave" Grid.Row="4" Grid.ColumnSpan="2" Content="Save" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BSave_Click" Margin="0,5,0,5"/>
+    </Grid>
+</UserControl>

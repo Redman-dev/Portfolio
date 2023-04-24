@@ -1,0 +1,45 @@
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\bin\Debug\Media Player.exe.config
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\bin\Debug\Media Player.exe
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\bin\Debug\Media Player.pdb
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\Media Player.csproj.AssemblyReference.cache
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\Media Player.csproj.SuggestedBindingRedirects.cache
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\MainWindow.g.cs
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\App.g.cs
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\Media Player_MarkupCompile.cache
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\Media Player_MarkupCompile.lref
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\MainWindow.baml
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\Media Player.g.resources
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\Media_Player.Properties.Resources.resources
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\Media Player.csproj.GenerateResource.cache
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\Media Player.csproj.CoreCompileInputs.cache
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\Media Player.exe
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\Media Player.pdb
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\bin\Debug\TagLibSharp.dll
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\bin\Debug\TagLibSharp.pdb
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\bin\Debug\TagLibSharp.xml
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\Media Player.csproj.CopyComplete
+C:\Users\ryani\Desktop\Media Player\Media Player\bin\Debug\Media Player.exe.config
+C:\Users\ryani\Desktop\Media Player\Media Player\bin\Debug\Media Player.exe
+C:\Users\ryani\Desktop\Media Player\Media Player\bin\Debug\Media Player.pdb
+C:\Users\ryani\Desktop\Media Player\Media Player\bin\Debug\TagLibSharp.dll
+C:\Users\ryani\Desktop\Media Player\Media Player\bin\Debug\TagLibSharp.pdb
+C:\Users\ryani\Desktop\Media Player\Media Player\bin\Debug\TagLibSharp.xml
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\Media Player.csproj.AssemblyReference.cache
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\Media Player.csproj.SuggestedBindingRedirects.cache
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\MainWindow.g.cs
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\App.g.cs
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\Media Player_MarkupCompile.cache
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\Media Player_MarkupCompile.lref
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\MainWindow.baml
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\Media Player.g.resources
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\Media_Player.Properties.Resources.resources
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\Media Player.csproj.GenerateResource.cache
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\Media Player.csproj.CoreCompileInputs.cache
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\Media Player.csproj.CopyComplete
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\Media Player.exe
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\Media Player.pdb
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\EditMediaTags.g.cs
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\EditMediaTags.baml
+C:\Users\ryani\Desktop\Media Player\Media Player\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\EditMediaTags.g.cs
+C:\Users\w0457048\OneDrive - Nova Scotia Community College\PROG2500\Media Player\Media Player\obj\Debug\EditMediaTags.baml
