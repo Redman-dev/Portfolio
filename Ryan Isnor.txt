@@ -5,9 +5,13 @@ Programming languages I know:
 * Python
 * MatLab
 * C
+* C++
+* C#
 * JavaScript
 * Html
 * VHDL
+* Golang
+* Solidity
 
 I love programming and I pick up new languages very quickly. Especially when the new language is similar to a language I have already learned, I have worked with FPGAs in the past and I thought they were very interesting. I have a great understanding of boolean logic gates and love different number systems like binary and hexidecimal. I have set up desktops, cash registers, and other devices for buisness use.
 
